@@ -28,5 +28,19 @@ namespace SalesWebMvc.Models
             BaseSalary = baseSalary;
             Department = department;
          }
+
+        public void AddSales(SalesRecord sr)
+        {
+            Sales.Add(sr);
+        }
+        public void RemoveSales(SalesRecord sr)
+        {
+            Sales.Remove(sr);
+        }
+        public double TotalSales(DateTime inicial, DateTime final) 
+        {
+            return Sales.Where(sr => sr.Date >= inicial && sr.Date <= final).Sum(sr => sr.Amount);
+        }
+
     }
 }
